@@ -50,7 +50,7 @@ I used the pandas library to calculate summary statistics of the traffic signs d
 * The shape of a traffic sign image is 32 x 32 x 3 (RGB channel)
 * The number of unique classes/labels in the data set is 43
 
-####2. Include an exploratory visualization of the dataset.
+#### 2. Include an exploratory visualization of the dataset.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how how many images in each class in training set.
 From the histogram, some classes have very few data, it will make some bias to the classes with more data.
@@ -59,9 +59,9 @@ From the histogram, some classes have very few data, it will make some bias to t
 I also randomly show couple images in training set.
 ![alt text][image2]
  
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
 As a first step, I decided to convert the images to YUV color scope because Y channel is weighted combination of RGB channel. Y channel, also one kind of grayscale, can preserve the features of shape in RGB channel. And, color do not play important role in traffic sign classifier. 
 As a last step, I normalized the image data because, as in class, normalize the features (dimension) can be more easy to train with single learning rate. After normalized, each feature (pixel) will similar distriubtion and one learning rate can fit to all features.
@@ -70,7 +70,7 @@ Here is an example of a traffic sign image before, after grayscaling and normali
 
 ![alt text][image3]
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 I LeNet model architecture with more weights and I also add dropout regulator to make my neural network more robust.
 ![LeNet Model][image4] 
@@ -99,7 +99,7 @@ My final model consisted of the following layers:
  
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 To train the model, I used the Adam optimizer (bult-in in TensorFlow), my final setting as following:
 
@@ -109,7 +109,7 @@ To train the model, I used the Adam optimizer (bult-in in TensorFlow), my final 
     * std. (sigma): 0.1
     * dropout (keep probability): 0.5
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 100 %
@@ -117,6 +117,7 @@ My final model results were:
 * test set accuracy of 96.9 %
 
 The following is epoch vs accuracy of training and validation.
+
 ![alt text][image5] 
 
 If an iterative approach was chosen:
@@ -131,9 +132,9 @@ Because the original LeNet have shallow filter depth (6 in first layer, 16 in se
 In addition, in order to make the model more robust to dataset that may not have all features (nosie on images). I add dropout layer in full connected layer to randomly ignore certain mount of features. The dropout rate I choose is 50 %.
  
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are ten German traffic signs that I found on the web:
 
@@ -141,7 +142,7 @@ Here are ten German traffic signs that I found on the web:
 
 The only uncorrect is the first image "double curve". Because the sign I get is actually different from dataset. The "double curve" in dataset is turn left first then turn right, but the sighn I get is turn right first. Other images are correctly calssified.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
@@ -163,7 +164,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 9 of the 10 traffic signs, which gives an accuracy of 90%. This compares favorably to the accuracy on the test set of 96.9%
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
